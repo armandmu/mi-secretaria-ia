@@ -84,7 +84,7 @@ export function applyProposals(data: AppData, proposals: Proposal[], fallback: S
     if (p.type === "create_task" && p.title?.trim()) {
       let projectId: string | null = null;
       if (p.project) projectId = next.projects.find(x => x.space === space && x.name.toLowerCase() === p.project?.toLowerCase())?.id || null;
-      next.tasks.push({id:uid(),title:p.title.trim().slice(0,220),description:(p.description || "").slice(0,800),space,projectId,due:p.due && /^\d{4}-\d{2}-\d{2}$/.test(p.due) ? p.due : null,priority:isPriority(p.priority)?p.priority:"media",done:false,createdAt:new Date().toISOString()});
+      next.tasks.push({id:uid(),title:p.title.trim().slice(0,220),description:(p.description || "").slice(0,800),space,projectId,due:typeof p.due === "string" && /^\d{4}-\d{2}-\d{2}$/.test(p.due) && !Number.isNaN(new Date(p.due+"T12:00:00").getTime()) ? p.due : null,priority:isPriority(p.priority)?p.priority:"media",done:false,createdAt:new Date().toISOString()});
     }
     if (p.type === "complete_task" && p.taskId) {
       next.tasks = next.tasks.map(t => t.id === p.taskId ? {...t,done:true} : t);
