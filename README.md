@@ -2,7 +2,7 @@
 
 Aplicación privada de uso personal para organizar tareas, proyectos, recordatorios y notas desde un chat en español. Diseñada para una sola persona, con dos espacios separados: **Profesional** y **Personal**.
 
-**Estado:** versión inicial compilada y desplegada en Vercel, con estado READY. URL de producción: https://mi-secretaria-ia.vercel.app. La protección de acceso de Vercel sigue activa; en caso necesario inicia sesión con tu cuenta. Publicación realizada subiendo una copia de los archivos a Vercel: el repositorio **todavía no está enlazado automáticamente** con Vercel. Supabase y OpenAI siguen pendientes de configuración; el modo inicial es local.
+**Estado:** versión inicial compilada y desplegada en Vercel, con estado READY. URL de producción: https://mi-secretaria-ia.vercel.app. La protección de acceso de Vercel sigue activa; en caso necesario inicia sesión con tu cuenta. Publicación realizada subiendo una copia de los archivos a Vercel: el repositorio **todavía no está enlazado automáticamente** con Vercel. Supabase está creado y conectado al proyecto de Vercel. La versión desplegada incluye sincronización tras iniciar sesión. Falta configurar en Supabase Auth la URL de redirección; OpenAI sigue pendiente de clave privada y cuenta autorizada.
 
 ## Qué incluye
 
@@ -47,14 +47,15 @@ Sin credenciales, la aplicación funciona en modo local y el chat utiliza un org
 
 ## Base de datos: Supabase
 
-1. Crea un proyecto Supabase.
-2. Ejecuta el SQL de supabase/schema.sql en el SQL Editor (una vez).
-3. Copia **Project URL** y la **anon / publishable key** a estas variables de Vercel:
+1. Proyecto Supabase creado: `kncspghztadiwozraigq` (región Europa). 
+2. Tabla y políticas de seguridad ya aplicadas y verificadas. 
+3. Conexión Supabase/Vercel configurada. Como referencia, las variables utilizadas son: 
+ **Project URL** y la **anon / publishable key** a estas variables de Vercel:
    - NEXT_PUBLIC_SUPABASE_URL
    - NEXT_PUBLIC_SUPABASE_ANON_KEY
    - SUPABASE_URL
    - SUPABASE_ANON_KEY
-4. En **Authentication → URL Configuration**, indica como Site URL la URL final de tu Vercel y añádela también entre las Redirect URLs permitidas. En local, añade http://localhost:3000.
+4. **Pendiente de configurar manualmente:** en Supabase **Authentication → URL Configuration**, establece `https://mi-secretaria-ia.vercel.app` como Site URL y añádela a Redirect URLs permitidas. En desarrollo local, puedes añadir también `http://localhost:3000`.
 5. Para uso individual, crea tu cuenta y deshabilita nuevas inscripciones. La aplicación permite el acceso mediante enlace enviado a tu correo.
 
 Si ya tienes datos locales en el mismo navegador, en el primer acceso a una cuenta sin datos se subirá esa copia. Si la cuenta ya tiene información, prevalecerá la copia de Supabase.
