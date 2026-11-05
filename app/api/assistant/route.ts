@@ -62,7 +62,19 @@ export async function POST(req: NextRequest) {
     const json = await response.json();
     const data = JSON.parse(json.choices?.[0]?.message?.content || "{}");
     const allowed = new Set(["create_task","create_project","add_note","complete_task"]);
-    const proposals = Array.isArray(data.proposals) ? data.proposals.filter((p:any)=>p && allowed.has(p.type)).slice(0,5) : [];
+    const proposals = Array.isArray(data.proposals) ? data.proposals.filter((p:any)=>{
+      if(!p || !allowed.has(p.type)) return false;
+      if(p.type === "create_task") return typeof p.title === "string" && p.title.trim().length > 0;
+      if(p.type === "create_project") return typeof p.name === "string" && p.name.trim().length > 0;
+      if(p.type === "add_note") return typeof p.text === "string" && p.text.trim().length > 0;
+      if(p.type === "complete_task") return typeof p.taskId === "string";
+      return false;
+    }).slice(0,5).map((p:any)=>({
+      ...p,
+      space: p.space === "personal" ? "personal" : p.space === "profesional" ? "profesional" : space,
+      project: typeof p.project === "string" ? p.project.slice(0,140) : undefined,
+      due: typeof p.due === "string" ? p.due : null
+    })) : [];
     return NextResponse.json({reply:String(data.reply || "He revisado tu petición.").slice(0,1200),proposals});
   } catch {
     return NextResponse.json({error:"La respuesta de la IA no se pudo interpretar."},{status:502});
