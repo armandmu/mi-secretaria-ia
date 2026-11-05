@@ -1,0 +1,10 @@
+{
+  "name": "Mi Secretaria IA",
+  "short_name": "Secretaria",
+  "description": "Tu espacio personal para organizar lo que importa",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f6f2",
+  "theme_color": "#182623",
+  "icons": [{"src":"/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
