@@ -2,7 +2,7 @@
 
 Aplicación privada de uso personal para organizar tareas, proyectos, recordatorios y notas desde un chat en español. Diseñada para una sola persona, con dos espacios separados: **Profesional** y **Personal**.
 
-**Estado:** versión inicial subida a GitHub, pendiente de verificación de compilación y publicación. No está desplegada automáticamente por el mero hecho de tener el código aquí.
+**Estado:** versión inicial compilada y desplegada en Vercel, con estado READY. URL de producción: https://mi-secretaria-ia.vercel.app. La protección de acceso de Vercel sigue activa; en caso necesario inicia sesión con tu cuenta. Publicación realizada subiendo una copia de los archivos a Vercel: el repositorio **todavía no está enlazado automáticamente** con Vercel. Supabase y OpenAI siguen pendientes de configuración; el modo inicial es local.
 
 ## Qué incluye
 
@@ -80,7 +80,7 @@ La API rechaza las peticiones cuando falta la autenticación, el correo propieta
 5. Configura la URL de producción en Supabase Auth. Haz una prueba de inicio de sesión, guarda una tarea y comprueba la sincronización desde otro navegador.
 6. Cada actualización de main podrá generar un despliegue nuevo con la integración Git.
 
-La publicación **no se ha hecho todavía**. La integración con el alojamiento debe completarse desde tu cuenta de Vercel.
+La primera publicación de producción ya se ha efectuado mediante un despliegue directo. Aún falta enlazar GitHub para que los cambios posteriores en main generen despliegues automáticamente.
 
 ## Licencia
 
