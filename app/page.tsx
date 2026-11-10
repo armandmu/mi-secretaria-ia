@@ -180,7 +180,7 @@ export default function Home() {
   return (
     <div className="app-shell">
       <aside className={"sidebar "+(mobileNav?"sidebar-open":"")}>
-        <div className="brand"><div className="brand-icon"><Sparkles size={22}/></div><div><strong>Mi Secretaria</strong><span>Tu asistente personal</span></div><button className="mobile-close" onClick={()=>setMobileNav(false)} aria-label="Cerrar menú"><X size={18}/></button></div>
+        <div className="brand"><img className="brand-logo" src="https://armandmu.github.io/recursos-web/logo.png" alt="Ángel Rull Psicólogo"/><div className="brand-details"><div className="brand-icon"><Sparkles size={22}/></div><div><strong>Mi Secretaria</strong><span>Tu asistente personal</span></div><button className="mobile-close" onClick={()=>setMobileNav(false)} aria-label="Cerrar menú"><X size={18}/></button></div></div>
         <div className="side-caption">TU ESPACIO</div>
         <div className="spaces">
           <button className={scope==="profesional"?"space selected":"space"} onClick={()=>changeScope("profesional")}><div className="space-symbol work"><FolderKanban size={16}/></div>Profesional {scope==="profesional"&&<Check size={15}/>}</button>
